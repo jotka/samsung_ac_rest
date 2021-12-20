@@ -4,7 +4,7 @@ public class Command {
     private String component;
     private String capability;
     private String command;
-    private String[] arguments;
+    private Object[] arguments;
 
     public Command(String capability, String command) {
         this.component = "main";
@@ -12,7 +12,7 @@ public class Command {
         this.command = command;
     }
 
-    public Command(String capability, String command, String[] arguments) {
+    public Command(String capability, String command, Object[] arguments) {
         this.component = "main";
         this.capability = capability;
         this.command = command;
@@ -43,7 +43,7 @@ public class Command {
         this.command = value;
     }
 
-    public String[] getArguments() {
+    public Object[] getArguments() {
         return arguments;
     }
 

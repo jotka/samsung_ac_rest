@@ -10,7 +10,7 @@ public class SamsungCommand {
         this.commands.add(new Command(capability, command));
     }
 
-    public SamsungCommand(String capability, String command, String[] params) {
+    public SamsungCommand(String capability, String command, Object[] params) {
         this.commands.add(new Command(capability, command, params));
     }
 

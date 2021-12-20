@@ -26,33 +26,42 @@ public class ACController {
     @PostMapping("/devices/{device}/power")
     public void power(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/power for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
         new SamsungRequest(env, device).execute("switch", param.getValue());
-        updateStatusFromCloud(device);
+
+        state.getComponents().getMain().getSwitch().getSwitch().setValue(param.getValue());
     }
 
     @PostMapping("/devices/{device}/ac_mode")
     public void acMode(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/ac_mode for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
         new SamsungRequest(env, device).execute("airConditionerMode", "setAirConditionerMode", new String[]{param.getValue()});
-        updateStatusFromCloud(device);
+        state.getComponents().getMain().getAirConditionerMode().getAirConditionerMode().setValue(param.getValue());
     }
 
     @PostMapping("/devices/{device}/fan_mode")
     public void fanMode(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/fan_mode for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
         new SamsungRequest(env, device).execute("airConditionerFanMode", "setFanMode", new String[]{param.getValue()});
-        updateStatusFromCloud(device);
+        state.getComponents().getMain().getAirConditionerFanMode().getFanMode().setValue(param.getValue());
     }
 
     @PostMapping("/devices/{device}/temperature")
     public void temperature(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/temperature for device %s: %s%n", device, param.getValue());
-        new SamsungRequest(env, device).execute("thermostatCoolingSetpoint", "setCoolingSetpoint", new String[]{param.getValue()});
-        updateStatusFromCloud(device);
+        State state = getCurrentStatus(device);
+        new SamsungRequest(env, device).execute("thermostatCoolingSetpoint", "setCoolingSetpoint", new Object[]{Integer.valueOf(param.getValue())});
+        state.getComponents().getMain().getThermostatCoolingSetpoint().getCoolingSetpoint().setValue(Double.parseDouble(param.getValue()));
     }
 
     @GetMapping("/devices/{device}/status")
     public State status(@PathVariable String device) throws IOException {
+        return getCurrentStatus(device);
+    }
+
+    private State getCurrentStatus(String device) throws IOException {
         if (!currentStatus.containsKey(device)) {
             System.out.printf("No current state for %s, updating from the cloud.%n", device);
             currentStatus.put(device, new SamsungRequest(env, device).status());

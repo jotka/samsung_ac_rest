@@ -3,6 +3,7 @@ package pl.finsys.acrest.samsung.out;
 import com.google.gson.Gson;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
+import org.apache.http.entity.ContentType;
 import org.springframework.core.env.Environment;
 import pl.finsys.acrest.samsung.in.State;
 
@@ -26,17 +27,17 @@ public class SamsungRequest {
         execute(new SamsungCommand(capability, command));
     }
 
-    public void execute(String capability, String command, String[] params) throws IOException {
+    public void execute(String capability, String command, Object[] params) throws IOException {
         execute(new SamsungCommand(capability, command, params));
     }
 
     private void execute(SamsungCommand command) throws IOException {
         String json = new Gson().toJson(command);
 
-//        Content content = Request.Post(API_URL + device + "/commands")
-//                .addHeader("Authorization", API_TOKEN).addHeader("Content-Type", contentType)
-//                .bodyString(json, ContentType.DEFAULT_TEXT)
-//                .execute().returnContent();
+        Content content = Request.Post(API_URL + device + "/commands")
+                .addHeader("Authorization", API_TOKEN).addHeader("Content-Type", contentType)
+                .bodyString(json, ContentType.DEFAULT_TEXT)
+                .execute().returnContent();
     }
 
     public State status() throws IOException {

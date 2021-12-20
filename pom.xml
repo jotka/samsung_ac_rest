@@ -8,13 +8,12 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>rest-service-complete</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-service-complete</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>pl.finsys</groupId>
+	<artifactId>ac-rest</artifactId>
+	<version>1.0.0</version>
+	<name>ac-rest</name>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>10</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
