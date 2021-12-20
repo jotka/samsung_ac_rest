@@ -14,7 +14,7 @@ public class Test {
         ACController rest = new ACController();
         rest.power(PRACOWNIA, new Param("on"));
 
-        State state = rest.status(PRACOWNIA);
+        String state = rest.status(PRACOWNIA);
         System.out.println(state);
     }
 }

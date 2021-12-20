@@ -1,5 +1,6 @@
 package pl.finsys.acrest;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -79,8 +80,11 @@ public class ACController {
     }
 
     @GetMapping("/devices/{device}/status")
-    public State status(@PathVariable String device) throws IOException {
-        return getCurrentStatus(device);
+    @ResponseBody
+    public String status(@PathVariable String device) throws IOException {
+        State state = getCurrentStatus(device);
+        Gson gson = new Gson();
+        return gson.toJson(state).replace("custom.",""); //remove custom.
     }
 
     private State getCurrentStatus(String device) throws IOException {
