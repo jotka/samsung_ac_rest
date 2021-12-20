@@ -52,8 +52,16 @@ public class ACController {
         state.getComponents().getMain().getAirConditionerFanMode().getFanMode().setValue(param.getValue());
     }
 
+    @PostMapping("/devices/{device}/fan_oscillation_mode")
+    public void fanOscillationMode(@PathVariable String device, @RequestBody Param param) throws IOException {
+        System.out.printf("/fan_oscillation_mode for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
+        new SamsungRequest(env, device).execute("fanOscillationMode", "setFanOscillationMode", new String[]{param.getValue()});
+        state.getComponents().getMain().getFanOscillationMode().getFanOscillationMode().setValue(param.getValue());
+    }
+
     @PostMapping("/devices/{device}/beep")
-    public void preset(@PathVariable String device, @RequestBody Param param) throws IOException {
+    public void beep(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/beep for device %s: %s%n", device, param.getValue());
         State state = getCurrentStatus(device);
         double volume = param.getValue().equalsIgnoreCase("on")? 100: 0;
@@ -62,7 +70,7 @@ public class ACController {
     }
 
     @PostMapping("/devices/{device}/preset")
-    public void beep(@PathVariable String device, @RequestBody Param param) throws IOException {
+    public void preset(@PathVariable String device, @RequestBody Param param) throws IOException {
         System.out.printf("/preset for device %s: %s%n", device, param.getValue());
         State state = getCurrentStatus(device);
         new SamsungRequest(env, device).execute("custom.airConditionerOptionalMode", "setAcOptionalMode", new String[]{param.getValue()});
