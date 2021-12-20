@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Main {
     private AirConditionerMode airConditionerMode;
+
+    @SerializedName("custom.airConditionerOptionalMode")
     private CustomAirConditionerOptionalMode customAirConditionerOptionalMode;
 
     @SerializedName("switch")

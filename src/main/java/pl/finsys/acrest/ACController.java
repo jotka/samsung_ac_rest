@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
+import pl.finsys.acrest.samsung.in.CustomAirConditionerOptionalMode;
+import pl.finsys.acrest.samsung.in.FanMode;
 import pl.finsys.acrest.samsung.in.State;
 import pl.finsys.acrest.samsung.out.SamsungRequest;
 
@@ -46,6 +48,25 @@ public class ACController {
         State state = getCurrentStatus(device);
         new SamsungRequest(env, device).execute("airConditionerFanMode", "setFanMode", new String[]{param.getValue()});
         state.getComponents().getMain().getAirConditionerFanMode().getFanMode().setValue(param.getValue());
+    }
+
+    @PostMapping("/devices/{device}/beep")
+    public void preset(@PathVariable String device, @RequestBody Param param) throws IOException {
+        System.out.printf("/beep for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
+        double volume = param.getValue().equalsIgnoreCase("on")? 100: 0;
+        new SamsungRequest(env, device).execute("audioVolume", "setVolume", new Double[]{volume});
+        state.getComponents().getMain().getAudioVolume().getVolume().setValue(volume);
+    }
+
+    @PostMapping("/devices/{device}/preset")
+    public void beep(@PathVariable String device, @RequestBody Param param) throws IOException {
+        System.out.printf("/preset for device %s: %s%n", device, param.getValue());
+        State state = getCurrentStatus(device);
+        new SamsungRequest(env, device).execute("custom.airConditionerOptionalMode", "setAcOptionalMode", new String[]{param.getValue()});
+        CustomAirConditionerOptionalMode mode = new CustomAirConditionerOptionalMode();
+        mode.setACOptionalMode(new FanMode(param.getValue()));
+        state.getComponents().getMain().setCustomAirConditionerOptionalMode(mode);
     }
 
     @PostMapping("/devices/{device}/temperature")
