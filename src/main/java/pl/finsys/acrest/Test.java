@@ -2,6 +2,7 @@ package pl.finsys.acrest;
 
 import org.apache.tomcat.util.json.ParseException;
 import pl.finsys.acrest.samsung.in.State;
+import pl.finsys.acrest.samsung.out.Param;
 
 import java.io.IOException;
 

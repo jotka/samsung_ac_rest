@@ -25,7 +25,6 @@ public class Main {
         this.airConditionerMode = value;
     }
 
-
     public CustomAirConditionerOptionalMode getCustomAirConditionerOptionalMode() {
         return customAirConditionerOptionalMode;
     }
@@ -81,6 +80,5 @@ public class Main {
     public void setAudioVolume(AudioVolume value) {
         this.audioVolume = value;
     }
-
 
 }

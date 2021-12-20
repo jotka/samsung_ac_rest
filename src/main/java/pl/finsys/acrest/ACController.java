@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.finsys.acrest.samsung.in.CustomAirConditionerOptionalMode;
 import pl.finsys.acrest.samsung.in.FanMode;
 import pl.finsys.acrest.samsung.in.State;
+import pl.finsys.acrest.samsung.out.Param;
 import pl.finsys.acrest.samsung.out.SamsungRequest;
 
 import java.io.IOException;

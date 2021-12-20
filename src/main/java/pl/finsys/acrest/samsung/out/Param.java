@@ -1,4 +1,4 @@
-package pl.finsys.acrest;
+package pl.finsys.acrest.samsung.out;
 
 public class Param {
     private String value;
