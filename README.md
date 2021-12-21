@@ -69,3 +69,4 @@ docker run \
     --memory=200m \
     ac-rest:latest
 ```
+Having this running, you can use the https://github.com/SebuZet/samsungrac to configure the IP climate setup in Home Assistant.
