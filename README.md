@@ -70,3 +70,4 @@ docker run \
     ac-rest:latest
 ```
 Having this running, you can use the https://github.com/SebuZet/samsungrac to configure the IP climate setup in Home Assistant.
+See `ac-rest.yaml` as an example configuration file for https://github.com/SebuZet/samsungrac to use with ac-rest.
