@@ -2,7 +2,9 @@
 
 ## the challenge
 In order to integrate Samsung AC devices with HomeAssistant, you need to open Home Assistant to the Internet, as the integration uses webhooks.
-As an alternative https://github.com/SebuZet/samsungrac can be used, but the Home Assistant asks for device status every 3 seconds, so if you have a couple of devices it will flood Samsung API with multiple frequent requests, which will make your account throttled or banned by Smasung.
+The https://github.com/SebuZet/samsungrac can be used as an alternative to the official integrations, but Home Assistant asks for device status every 3 seconds.
+If you have a couple of AC devices it will flood Samsung API with frequent multiple requests.
+This will render your Samsung API account throttled and then banned.
 
 **ac-rest**  is an auxiliary server for processing and executing AC-conditioners requests to Samsung Smartthings API.
 Tested with Samsung WindFree Avant 2,5kW and 5kW devices and https://github.com/SebuZet/samsungrac
