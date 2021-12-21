@@ -98,7 +98,7 @@ public class ACController {
     private State getCurrentStatus(String device) throws IOException {
         if (!currentStatus.containsKey(device)) {
             System.out.printf("No current state for %s, updating from the cloud.%n", device);
-            currentStatus.put(device, new SamsungRequest(env, device).status());
+            updateStatusFromCloud(device);
         }
         return currentStatus.get(device);
     }
