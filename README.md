@@ -24,16 +24,16 @@ Expects ENV variables:
 ## endpoints exposed:
 
 
-| method | URL                                    | payload                                                                                       | comment |
-|--------|----------------------------------------|-----------------------------------------------------------------------------------------------|---------|
-| GET    | /devices/{device}/status               | response has the payload the same as https://api.smartthings.com/v1/devices/{deviceId}/status |         |
-| POST   | /devices/{device}/power                | "on", "off                                                                                    |         |
-| POST   | /devices/{device}/temperature          | temperature in Celsius, double                                                                |         |
-| POST   | /devices/{device}/ac_mode              | "auto", "cool", "dry", "off"                                                                  |         |
-| POST   | /devices/{device}/fan_mode             | "low", "medium", "high", "turbo"                                                              |         |
-| POST   | /devices/{device}/fan_oscillation_mode | "vertical", "horizontal", "fixed", "fixedLeft", "fixedRight"                                  |         |
-| POST   | /devices/{device}/beep                 | "on", "off"                                                                                   |         |
-| POST   | /devices/{device}/preset               | "off", "speed", "sleep", "windFree", "windFreeSleep"                                          |         |
+| method | URL                                    | payload                                                                                                 | comment |
+|--------|----------------------------------------|---------------------------------------------------------------------------------------------------------|---------|
+| GET    | /devices/{device}/status               | response has the payload the same as https://api.smartthings.com/v1/devices/{deviceId}/status           |         |
+| POST   | /devices/{device}/power                | "on", "off                                                                                              |         |
+| POST   | /devices/{device}/temperature          | temperature in Celsius, double                                                                          |         |
+| POST   | /devices/{device}/ac_mode              | "auto", "cool", "dry", "off"                                                                            |         |
+| POST   | /devices/{device}/fan_mode             | "auto", "low", "medium", "high", "turbo"                                                                 |         |
+| POST   | /devices/{device}/fan_oscillation_mode | "vertical", "horizontal", "fixed", "fixedLeft", "fixedRight", "fixedCenter", direct", "indirect", "far" |         |
+| POST   | /devices/{device}/beep                 | "on", "off"                                                                                             |         |
+| POST   | /devices/{device}/preset               | "off", "speed", "sleep", "windFree", "windFreeSleep"                                                    |         |
 
 ## parameters (POST payload)
 
