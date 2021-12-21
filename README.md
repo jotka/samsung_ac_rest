@@ -11,8 +11,8 @@ This will render your Samsung API account throttled and then banned.
 **ac-rest**  is an auxiliary server for processing and executing AC-conditioners requests to Samsung Smartthings API.
 Tested with Samsung WindFree Avant 2,5kW and 5kW devices and https://github.com/SebuZet/samsungrac
 
-Can be used with Home Assistant, as **it caches the status queries** (Home Assistant asks for status every 3 seconds).
-ac-rest will refresh the status from the Samsung Cloud periodically (once per minute).
+ac-rest **uses own status cache** and skips the Samsung API calls.
+It will refresh the status from the Samsung Cloud periodically also (once per minute), to sync the status if you use the mobile app to control your unit, for example.
 
 ## configuration
 
