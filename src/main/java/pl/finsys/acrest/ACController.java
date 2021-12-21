@@ -12,9 +12,7 @@ import pl.finsys.acrest.samsung.out.Param;
 import pl.finsys.acrest.samsung.out.SamsungRequest;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
