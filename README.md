@@ -53,5 +53,19 @@ POST /devices/{device}/temperature  {"value": 21}
 POST /devices/{device}/ac_mode  {"value": "cool"}
 ```
 
+## running
+Can be run in Docker, for example:
 
-
+```bash
+docker run \
+    -d \
+    --name=acrest \
+    --restart=unless-stopped \
+    --env=DEVICES="edf3d10c-redacted-fb7f-redacted,redacted-e88e-redcated,9d8f6a8c-redacted-ed416e8b3fd1,redacted9e7c-ad8a-redacted" \
+    --env=API_TOKEN="Bearer: xxx-yyy" \
+    --env=API_URL="https://api.smartthings.com/v1/devices/" \
+    --network=bridge \
+    -p 8080:8080 \
+    --memory=200m \
+    ac-rest:latest
+```
