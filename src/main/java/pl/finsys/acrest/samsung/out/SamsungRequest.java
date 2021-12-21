@@ -33,8 +33,7 @@ public class SamsungRequest {
 
     private void execute(SamsungCommand command) throws IOException {
         String json = new Gson().toJson(command);
-
-        Content content = Request.Post(API_URL + device + "/commands")
+        Request.Post(API_URL + device + "/commands")
                 .addHeader("Authorization", API_TOKEN).addHeader("Content-Type", contentType)
                 .bodyString(json, ContentType.DEFAULT_TEXT)
                 .execute().returnContent();

@@ -115,7 +115,7 @@ public class ACController {
 	private void updateAllFromCloud() throws IOException {
         System.out.println("updating device statuses from the cloud.");
         String DEVICES = env.getProperty("DEVICES");
-        List<String> devices = Arrays.asList(DEVICES.split(","));
+        String[] devices = DEVICES.split(",");
         for (String device : devices) {
             updateStatusFromCloud(device);
         }
